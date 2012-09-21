@@ -66,8 +66,10 @@ param(
       New-Item $packagelibPath -type directory
     }
 
-    $msiProductCodeTxt=join-path $packagelibPath $packageName`.txt
+    $msiProductCodeTxt=join-path $packagelibPath "$packageName-msicode.txt"
+    $msiFilesTxt=join-path $packagelibPath "$packageName-msifiles.txt"
     $msiProductCode=Get-MSIProductCode $file |add-content $msiProductCodeTxt
+    $msiFiles=Get-MSIFiles $file |add-content $msiFilesTxt
 
     Start-ChocolateyProcessAsAdmin "$msiArgs" 'msiexec' -validExitCodes $validExitCodes
     #Start-Process -FilePath msiexec -ArgumentList $msiArgs -Wait
