@@ -71,8 +71,7 @@ if(Test-Path($extensionsPath)) {
 }
 
 #main entry point
-#Remove-LastInstallLog
-<<<<<<< HEAD
+Append-Log
 
 switch -wildcard ($command) {
   "install"         {Invoke-ChocolateyFunction "Chocolatey-Install" @($packageName,$source,$version,$installArguments)}
