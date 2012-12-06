@@ -82,4 +82,11 @@ param(
       $versionsObj
     }
   }
+
+  # exit error 1 if querying a single package, no version returned, and not called from another function (ie cup) 3 levels deep =direct
+  $commandType=((Get-Variable -Name MyInvocation -Scope 3 -ValueOnly).MyCommand).CommandType
+  
+  if ($packageName -ne 'all' -and $versionFound -eq 'no version' -and $commandType -ne 'Script') {
+    throw ""
+  }
 }
