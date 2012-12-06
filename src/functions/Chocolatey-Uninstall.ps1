@@ -13,19 +13,20 @@ param(
   }
 
     Write-Host "Chocolatey (v$chocVer) is unininstalling $packageName..." -ForegroundColor $RunNote -BackgroundColor Black
-  
-	
-	$packages = $packageName
-	foreach ($package in $packages) {
-		$versions = Chocolatey-Version $package $source
-		if ($versions.found -eq "no version") {
-		  write-host "not installed"
-		}
-		else {
-		  Write-Debug "Looking for $($package).$($versions.found)"
+
+
+  $packages = $packageName
+  foreach ($package in $packages) {
+    $versions = Chocolatey-Version $package $source
+    if ($versions.found -eq "no version") {
+      throw "package is not installed"
+
+    }
+    else {
+      Write-Debug "Looking for $($package).$($versions.found)"
           $packageFolder = Join-Path $nugetLibPath "$($package).$($versions.found)" 
-          Run-ChocolateyPS1 $packageFolder $package "uninstall"
-		  Remove-Item -Recurse -Force $packageFolder
-		}
-	}
+          Invoke-ChocolateyFunction "Run-ChocolateyPS1" @($packageFolder,$package,"uninstall")
+      Remove-Item -Recurse -Force $packageFolder
+    }
+  }
 }

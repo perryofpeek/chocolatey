@@ -15,7 +15,7 @@ param(
 	foreach ($package in $packages) {
 		$versions = Chocolatey-Version $package $source
 		if ($versions -ne $null -and $versions.'foundCompare' -lt $versions.'latestCompare') {
-			Chocolatey-NuGet $package $source
+			Invoke-ChocolateyFunction "Chocolatey-Nuget" @($package,$source) 
 		}
 	}
 }
