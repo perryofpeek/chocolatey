@@ -7,10 +7,9 @@ param(
   if ($packageFolder -notlike '') { 
 
     Write-Debug "  __ Executable Links (*.exe) __"
-@"
-Looking for executables in folder: $packageFolder
-Adding batch files for any executables found to a location on PATH. In other words the executable will be available from ANY command line/powershell prompt.
-"@ | Write-Debug
+    Write-Debug " Looking for executables in folder: $packageFolder."
+    Write-Debug " Adding batch files for any executables found to a location on PATH. Executuable will be available from cmd/ps prompt"
+
     $batchCreated = $false
     try {
       $files = get-childitem $packageFolder -include *.exe -recurse
