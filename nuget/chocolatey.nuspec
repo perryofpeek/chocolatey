@@ -3,11 +3,11 @@
   <metadata>
     <id>chocolatey</id>
     <title>Chocolatey</title>
-    <version>0.9.8.20</version>
+    <version>0.9.8.21</version>
     <authors>Rob Reynolds</authors>
     <owners>Rob Reynolds</owners>
-    <summary>Chocolatey is your machine level NuGet repository. Think apt-get for Windows (executables/application packages), not library packages.</summary>
-    <description>Chocolatey - think executables/application packages (like apt-get for Windows), not library packages. This is what the Chocolatey NuGet goodness is for.
+    <summary>TTL CUSTOM PATCHED VERSION  Chocolatey is your machine level NuGet repository. Think apt-get for Windows (executables/application packages), not library packages.</summary>
+    <description>TTL CUSTOM PATCHED VERSION  Chocolatey - think executables/application packages (like apt-get for Windows), not library packages. This is what the Chocolatey NuGet goodness is for.
 Chocolatey allows you to install application nuggets and run executables from anywhere.  
 ======= Executable Nuggets =======
 For example, say you have an executable in the tools folder of your package named bob.exe. Then you can type
