@@ -4,7 +4,7 @@ param(
   [string] $source = '',
   [string] $version = ''
 )
-  Write-Debug "Running 'Run-NuGet' for $packageName with source: `'$source`', version:`'$version`'";
+  Write-Host "Running 'Run-NuGet' for $packageName with source: `'$source`', version:`'$version`'";
   Write-Debug "___ NuGet ____"
 
   $srcArgs = Get-SourceArguments $source
@@ -19,7 +19,7 @@ param(
   }
   $logFile = Join-Path $nugetChocolateyPath 'install.log'
   $errorLogFile = Join-Path $nugetChocolateyPath 'error.log'
-  Write-Debug "Calling `'$nugetExe`' $packageArgs"
+  Write-host "Calling `'$nugetExe`' $packageArgs"
 
   $process = New-Object system.Diagnostics.Process
   $process.StartInfo = new-object System.Diagnostics.ProcessStartInfo($nugetExe, $packageArgs)
@@ -38,7 +38,7 @@ param(
   $errors | Out-File $errorLogFile
 
   foreach ($line in $nugetOutput) {
-    if ($line -ne $null) {Write-Debug $line;}
+    if ($line -ne $null) {Write-Host $line;}
   }
 
   if ($errors -ne '') {
