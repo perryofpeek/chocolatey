@@ -25,7 +25,7 @@ param(
 		  Write-Debug "Looking for $($package).$($versions.found)"
           $packageFolder = Join-Path $nugetLibPath "$($package).$($versions.found)" 
           Run-ChocolateyPS1 $packageFolder $package "uninstall"
-		  Remove-Item -Recurse -Force $packageFolder
+		  Remove-Item -Recurse -Force $packageFolder $installerArguments
 		}
 	}
 }
